@@ -1,8 +1,5 @@
 #!/bin/bash
-
-# Path to the flag file
-FLAG_FILE="/var/lib/taofu_installed.flag"
-
+SHOW_MENU_ON_INSTALL=0
 # Function to show menu
 show_menu(){
     clear
@@ -83,9 +80,8 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
+        SCRIPT_INSTALLED=1
     fi
-    # Create a flag file to prevent repeated menu execution
-    touch $FLAG_FILE
 }
 
 # Main execution starts here
@@ -93,8 +89,7 @@ if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
-    # Directly execute the menu after setup
-    if [ ! -f $FLAG_FILE ]; then
+    if [ $SCRIPT_INSTALLED -eq 1 ]; then
         /usr/local/bin/tf
     fi
 fi
