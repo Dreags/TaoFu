@@ -80,6 +80,7 @@ setup_script(){
         chmod +x /usr/local/bin/TaoFu
         echo "脚本已安装。输入 'TaoFu' 启动菜单。"
     fi
+    /usr/local/bin/TaoFu
 }
 
 # Main execution starts here
