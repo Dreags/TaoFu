@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define a flag file to check if the script is already installed
+FLAG_FILE="/usr/local/bin/tf"
+
 # Function to show menu
 show_menu(){
     clear
@@ -42,6 +45,7 @@ uninstall_script() {
     echo "正在卸载脚本..."
     # 清理安装内容
     rm -f /usr/local/bin/tf
+    rm -f $FLAG_FILE
     echo "卸载完成。"
     exit 0
 }
@@ -79,13 +83,14 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
+        touch $FLAG_FILE  # Create a flag file to indicate installation
     fi
-    # 执行脚本
+    # Execute the script
     /usr/local/bin/tf
 }
 
 # Main execution starts here
-if [ "${BASH_SOURCE[0]}" == "/usr/local/bin/tf" ]; then
+if [ -f /usr/local/bin/tf ] && [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
