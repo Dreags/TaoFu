@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Define a flag file to check if the script is already installed
-FLAG_FILE="/usr/local/bin/tf"
-
 # Function to show menu
 show_menu(){
     clear
@@ -36,8 +33,8 @@ show_menu(){
 
 # Function to manage Warp
 cfwarp() {
-    bash <(curl -Ls https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)
-    back
+  bash <(curl -Ls https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)
+  back
 }
 
 # Function to uninstall the script
@@ -83,14 +80,12 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
-        touch $FLAG_FILE  # Create a flag file to indicate installation
+        
     fi
-    # Execute the script
-    /usr/local/bin/tf
 }
 
 # Main execution starts here
-if [ -f /usr/local/bin/tf ] && [ "$0" == "/usr/local/bin/tf" ]; then
+if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
