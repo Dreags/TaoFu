@@ -87,5 +87,4 @@ if [ "$0" == "/usr/local/bin/TaoFu" ]; then
     show_menu
 else
     setup_script
-    /usr/local/bin/TaoFu
 fi
