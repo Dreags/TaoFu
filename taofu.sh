@@ -80,7 +80,7 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
-        SCRIPT_INSTALLED=1
+        SCRIPT_INSTALLED=$((SCRIPT_INSTALLED + 1))
     fi
 }
 
