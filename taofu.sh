@@ -17,15 +17,15 @@ show_menu(){
     white "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     white "桃符脚本管理工具快捷方式：TaoFu"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    green "1. 卸载脚本"
     green "1. 管理 Warp"
-    green "2. 卸载脚本"
     green "0. 退出脚本"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     echo
     readp "请输入数字:" Input
     case "$Input" in
-        1 ) cfwarp;;
-        2 ) uninstall_script;;
+        2 ) cfwarp;;
+        1 ) uninstall_script;;
         0 ) exit 0;;
         * ) echo "无效的选择，请重新输入"; back;;
     esac
@@ -76,7 +76,7 @@ back(){
 # Download and setup the script
 setup_script(){
     if [ ! -f /usr/local/bin/TaoFu ]; then
-        wget -qO /usr/local/bin/TaoFu https://your_github_repository/taofu.sh
+        wget -qO /usr/local/bin/TaoFu https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/TaoFu
         echo "脚本已安装。输入 'TaoFu' 启动菜单。"
     fi
