@@ -73,14 +73,14 @@ back(){
     read -p "按任意键返回主菜单..."
     show_menu
 }
-SCRIPT_INSTALLED=0
+
 # Download and setup the script
 setup_script(){
     if [ ! -f /usr/local/bin/tf ]; then
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
-        SCRIPT_INSTALLED=$((SCRIPT_INSTALLED + 1))
+        
     fi
 }
 
@@ -89,7 +89,4 @@ if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
-    if [ "$SCRIPT_INSTALLED" -eq 1 ]; then
-        /usr/local/bin/tf
-    fi
 fi
