@@ -15,7 +15,7 @@ show_menu(){
     white "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     white "桃符脚本管理工具"
     white "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    white "桃符脚本管理工具快捷方式：TaoFu"
+    white "桃符脚本管理工具快捷方式：tf"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     green "1. 卸载脚本"
     green "2. 管理 Warp"
@@ -41,7 +41,7 @@ cfwarp() {
 uninstall_script() {
     echo "正在卸载脚本..."
     # 清理安装内容
-    rm -f /usr/local/bin/TaoFu
+    rm -f /usr/local/bin/tf
     echo "卸载完成。"
     exit 0
 }
@@ -75,18 +75,18 @@ back(){
 
 # Download and setup the script
 setup_script(){
-    if [ ! -f /usr/local/bin/TaoFu ]; then
-        wget -qO /usr/local/bin/TaoFu  https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
-        chmod +x /usr/local/bin/TaoFu
-        echo "脚本已安装。输入 'TaoFu' 启动菜单。"
+    if [ ! -f /usr/local/bin/tf ]; then
+        wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
+        chmod +x /usr/local/bin/tf
+        echo "脚本已安装。输入 'tf' 启动菜单。"
     fi
-    /usr/local/bin/TaoFu
+    # Start the menu immediately after setup
+    /usr/local/bin/tf
 }
 
 # Main execution starts here
-if [ "$0" == "/usr/local/bin/TaoFu" ]; then
+if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
-    
 fi
