@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Path to the flag file
+FLAG_FILE="/var/lib/taofu_installed.flag"
+
 # Function to show menu
 show_menu(){
     clear
@@ -42,6 +45,7 @@ uninstall_script() {
     echo "正在卸载脚本..."
     # 清理安装内容
     rm -f /usr/local/bin/tf
+    rm -f $FLAG_FILE
     echo "卸载完成。"
     exit 0
 }
@@ -79,9 +83,9 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
-        /usr/local/bin/tf
     fi
-    
+    # Create a flag file to prevent repeated menu execution
+    touch $FLAG_FILE
 }
 
 # Main execution starts here
@@ -89,4 +93,8 @@ if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
+    # Directly execute the menu after setup
+    if [ ! -f $FLAG_FILE ]; then
+        /usr/local/bin/tf
+    fi
 fi
