@@ -1,5 +1,5 @@
 #!/bin/bash
-SHOW_MENU_ON_INSTALL=0
+
 # Function to show menu
 show_menu(){
     clear
@@ -80,7 +80,6 @@ setup_script(){
         wget -qO /usr/local/bin/tf https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/tf
         echo "脚本已安装。输入 'tf' 启动菜单。"
-        SCRIPT_INSTALLED=$((SCRIPT_INSTALLED + 1))
     fi
 }
 
@@ -89,7 +88,4 @@ if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
-    if [ $SCRIPT_INSTALLED -eq 1 ]; then
-        /usr/local/bin/tf
-    fi
 fi
