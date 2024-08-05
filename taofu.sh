@@ -76,7 +76,7 @@ back(){
 # Download and setup the script
 setup_script(){
     if [ ! -f /usr/local/bin/TaoFu ]; then
-        wget -qO /usr/local/bin/TaoFu https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
+        wget -qO /usr/local/bin/TaoFu  https://raw.githubusercontent.com/Dreags/TaoFu/main/taofu.sh
         chmod +x /usr/local/bin/TaoFu
         echo "脚本已安装。输入 'TaoFu' 启动菜单。"
     fi
