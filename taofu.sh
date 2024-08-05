@@ -88,4 +88,5 @@ if [ "$0" == "/usr/local/bin/tf" ]; then
     show_menu
 else
     setup_script
+    sleep 1
 fi
